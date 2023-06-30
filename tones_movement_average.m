@@ -1,15 +1,16 @@
-function [Norm_z_traces] = Convert_tones_to_Zscore(Time,trace)
+function [Norm_z_traces] = tones_movement_average(Time,trace)
+%this will take a set of tones from 1 mouse on 1 day 
 
-% will smooth the traces
-smooth_traces=movmean(trace,20);
+%then will smooth the traces
+smooth_traces=movmean(trace,10);
 
 % number of traces
 n=size(trace,2);
 
 %then will convert to z-score
-z_traces=zscore(smooth_traces);
+z_traces=(smooth_traces);
 
-%then will normalize the trace to the average z-score of preCS period
+%then will normalize the trace to the average preCS period
 %first make loop that takes the mean of first 20 sec of each tone
 preCS_means=zeros(1,n);
 
@@ -25,30 +26,25 @@ for i=1:n
 end
 
 
+%then will average the traces
 ZScoreTrace=mean(Norm_z_traces,2);
 
-% get AUC's
-AUCs=zeros(1,n);
-
-for i=1:n
-    AUCs(i)=AUC_tones(Norm_z_traces(:,i));
-end
-
-
-%also will calculate SEM
+% calculate SEM
 zSEM=std(Norm_z_traces,[],2)/sqrt(size(Norm_z_traces,2));
 
-%also plot figure
+% plot figure
 figure;
 shadedErrorBar(Time,ZScoreTrace,zSEM);
-ylim([-1.5 1.5]);
+% ylim([-2 2]);
 xlabel('Time');
-ylabel('z score');
+ylabel('movement score');
 hold on
 xline(0);
+%xline(29,'r');
 xline(30);
 xlim([-10 40]);
-set(gca,'FontSize',40);
+
+
 
 end
 

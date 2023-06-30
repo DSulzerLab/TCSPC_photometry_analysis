@@ -20,6 +20,8 @@ mouse22=xlsread('mouse 22 shock + saline.xlsx');
 mouse23=xlsread('mouse 23 shock + saline.xlsx');
 mouse24=xlsread('mouse 24 shock + saline.xlsx');
 
+%% times
+
 % this takes time from 1 file and puts it in a variable 
 Time=mouse1amph(5:305,5);
 
@@ -150,109 +152,5 @@ set(gca,'XTick',(-5:1:10))
 xline(0);
 xline(1);
 legend({'No Shock','Shock + Saline','Shock + Amphetamine'},'Location','northwest');
-
-%% This calculates the AUC for the peak following shocks
-
-% AUC of no shock peak
-increase_AUC_no_mouse1z=ShockAnalyzeIncreaseAUC(nomouse1_meanz);
-increase_AUC_no_mouse2z=ShockAnalyzeIncreaseAUC(nomouse2_meanz);
-increase_AUC_no_mouse3z=ShockAnalyzeIncreaseAUC(nomouse3_meanz);
-increase_AUC_no_mouse4z=ShockAnalyzeIncreaseAUC(nomouse4_meanz);
-
-increase_AUC_no_mouse21z=ShockAnalyzeIncreaseAUC(nomouse21_meanz);
-increase_AUC_no_mouse22z=ShockAnalyzeIncreaseAUC(nomouse22_meanz);
-increase_AUC_no_mouse23z=ShockAnalyzeIncreaseAUC(nomouse23_meanz);
-increase_AUC_no_mouse24z=ShockAnalyzeIncreaseAUC(nomouse24_meanz);
-
-% AUC of saline peak
-increase_AUC_sal_mouse1z=ShockAnalyzeIncreaseAUC(mouse1_meanz);
-increase_AUC_sal_mouse2z=ShockAnalyzeIncreaseAUC(mouse2_meanz);
-increase_AUC_sal_mouse3z=ShockAnalyzeIncreaseAUC(mouse3_meanz);
-increase_AUC_sal_mouse4z=ShockAnalyzeIncreaseAUC(mouse4_meanz);
-
-increase_AUC_sal_mouse21z=ShockAnalyzeIncreaseAUC(mouse21_meanz);
-increase_AUC_sal_mouse22z=ShockAnalyzeIncreaseAUC(mouse22_meanz);
-increase_AUC_sal_mouse23z=ShockAnalyzeIncreaseAUC(mouse23_meanz);
-increase_AUC_sal_mouse24z=ShockAnalyzeIncreaseAUC(mouse24_meanz);
-
-% AUC of ampehtamine peak
-increase_AUC_amph_mouse1z=ShockAnalyzeIncreaseAUC(APMHmouse1_meanz);
-increase_AUC_amph_mouse2z=ShockAnalyzeIncreaseAUC(APMHmouse2_meanz);
-increase_AUC_amph_mouse3z=ShockAnalyzeIncreaseAUC(APMHmouse3_meanz);
-increase_AUC_amph_mouse4z=ShockAnalyzeIncreaseAUC(APMHmouse4_meanz);
-
-increase_AUC_amph_mouse21z=ShockAnalyzeIncreaseAUC(APMHmouse21_meanz);
-increase_AUC_amph_mouse22z=ShockAnalyzeIncreaseAUC(APMHmouse22_meanz);
-increase_AUC_amph_mouse23z=ShockAnalyzeIncreaseAUC(APMHmouse23_meanz);
-increase_AUC_amph_mouse24z=ShockAnalyzeIncreaseAUC(APMHmouse24_meanz);
-
-% this accumulates those values in a matrix to be used for analysis in
-% Graphpad Prism
-no_shock_increase_AUC=[
-increase_AUC_no_mouse1z;increase_AUC_no_mouse2z;increase_AUC_no_mouse3z;increase_AUC_no_mouse4z;
-increase_AUC_no_mouse21z;increase_AUC_no_mouse22z;increase_AUC_no_mouse23z;increase_AUC_no_mouse24z;
-];
-
-saline_increase_AUC=[
-increase_AUC_sal_mouse1z;increase_AUC_sal_mouse2z;increase_AUC_sal_mouse3z;increase_AUC_sal_mouse4z;
-increase_AUC_sal_mouse21z;increase_AUC_sal_mouse22z;increase_AUC_sal_mouse23z;increase_AUC_sal_mouse24z;
-];
-
-amphetamine_increase_AUC=[
-increase_AUC_amph_mouse1z;increase_AUC_amph_mouse2z;increase_AUC_amph_mouse3z;increase_AUC_amph_mouse4z;
-increase_AUC_amph_mouse21z;increase_AUC_amph_mouse22z;increase_AUC_amph_mouse23z;increase_AUC_amph_mouse24z;
-];
-
-%% AUC trough following shocks
-
-% AUC of no shock trough
-decrease_AUC_no_mouse1z=ShockAnalyzeDecreaseAUC(nomouse1_meanz);
-decrease_AUC_no_mouse2z=ShockAnalyzeDecreaseAUC(nomouse2_meanz);
-decrease_AUC_no_mouse3z=ShockAnalyzeDecreaseAUC(nomouse3_meanz);
-decrease_AUC_no_mouse4z=ShockAnalyzeDecreaseAUC(nomouse4_meanz);
-
-decrease_AUC_no_mouse21z=ShockAnalyzeDecreaseAUC(nomouse21_meanz);
-decrease_AUC_no_mouse22z=ShockAnalyzeDecreaseAUC(nomouse22_meanz);
-decrease_AUC_no_mouse23z=ShockAnalyzeDecreaseAUC(nomouse23_meanz);
-decrease_AUC_no_mouse24z=ShockAnalyzeDecreaseAUC(nomouse24_meanz);
-
-% AUC of saline trough
-decrease_AUC_sal_mouse1z=ShockAnalyzeDecreaseAUC(mouse1_meanz);
-decrease_AUC_sal_mouse2z=ShockAnalyzeDecreaseAUC(mouse2_meanz);
-decrease_AUC_sal_mouse3z=ShockAnalyzeDecreaseAUC(mouse3_meanz);
-decrease_AUC_sal_mouse4z=ShockAnalyzeDecreaseAUC(mouse4_meanz);
-
-decrease_AUC_sal_mouse21z=ShockAnalyzeDecreaseAUC(mouse21_meanz);
-decrease_AUC_sal_mouse22z=ShockAnalyzeDecreaseAUC(mouse22_meanz);
-decrease_AUC_sal_mouse23z=ShockAnalyzeDecreaseAUC(mouse23_meanz);
-decrease_AUC_sal_mouse24z=ShockAnalyzeDecreaseAUC(mouse24_meanz);
-
-% AUC of ampehtamine trough
-decrease_AUC_amph_mouse1z=ShockAnalyzeDecreaseAUC(APMHmouse1_meanz);
-decrease_AUC_amph_mouse2z=ShockAnalyzeDecreaseAUC(APMHmouse2_meanz);
-decrease_AUC_amph_mouse3z=ShockAnalyzeDecreaseAUC(APMHmouse3_meanz);
-decrease_AUC_amph_mouse4z=ShockAnalyzeDecreaseAUC(APMHmouse4_meanz);
-
-decrease_AUC_amph_mouse21z=ShockAnalyzeDecreaseAUC(APMHmouse21_meanz);
-decrease_AUC_amph_mouse22z=ShockAnalyzeDecreaseAUC(APMHmouse22_meanz);
-decrease_AUC_amph_mouse23z=ShockAnalyzeDecreaseAUC(APMHmouse23_meanz);
-decrease_AUC_amph_mouse24z=ShockAnalyzeDecreaseAUC(APMHmouse24_meanz);
-
-% this accumulates those values in a matrix to be used for analysis in
-% Graphpad Prism
-no_shock_decrease_AUC=[
-decrease_AUC_no_mouse1z;decrease_AUC_no_mouse2z;decrease_AUC_no_mouse3z;decrease_AUC_no_mouse4z;
-decrease_AUC_no_mouse21z;decrease_AUC_no_mouse22z;decrease_AUC_no_mouse23z;decrease_AUC_no_mouse24z;
-];
-
-saline_decrease_AUC=[
-decrease_AUC_sal_mouse1z;decrease_AUC_sal_mouse2z;decrease_AUC_sal_mouse3z;decrease_AUC_sal_mouse4z;
-decrease_AUC_sal_mouse21z;decrease_AUC_sal_mouse22z;decrease_AUC_sal_mouse23z;decrease_AUC_sal_mouse24z;
-];
-
-amphetamine_decrease_AUC=[
-decrease_AUC_amph_mouse1z;decrease_AUC_amph_mouse2z;decrease_AUC_amph_mouse3z;decrease_AUC_amph_mouse4z;
-decrease_AUC_amph_mouse21z;decrease_AUC_amph_mouse22z;decrease_AUC_amph_mouse23z;decrease_AUC_amph_mouse24z;
-];
 
 toc
